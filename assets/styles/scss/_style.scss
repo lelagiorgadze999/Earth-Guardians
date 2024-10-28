@@ -1,0 +1,824 @@
+// fonts
+@import url(../../fonts/Roboto-Black.ttf);
+@import url(../../fonts/Roboto-Bold.ttf);
+@import url(../../fonts/Roboto-Light.ttf);
+@import url(../../fonts/Roboto-Medium.ttf);
+@import url(../../fonts/Roboto-Thin.ttf);
+
+// main page style /////////
+
+// in header i use class because in media page there are different color of bg
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  background-color: $white;
+  padding: 15px 0;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between, center);
+    h1 {
+      a {
+        @include my-theme($black-color, 24px, 700);
+        &:hover {
+          color: $green-primary;
+          transition: color 2s ease-in-out;
+        }
+      }
+    }
+    nav {
+      @include my-flex(row, space-between, center);
+      gap: 30px;
+      li {
+        @include my-flex(row, flex-start, center);
+        gap: 40px;
+        ul {
+          a {
+            @include my-theme($black-color, 16px, 500);
+          }
+        }
+        @media (max-width: 900px) {
+          display: none;
+        }
+      }
+      .donate-btn {
+        @include my-theme($white, 16px, 500);
+        background-color: $primary-text;
+        padding: 12px 32px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover {
+          background-color: $green-primary;
+          transition: background-color 2s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+#main {
+  margin-top: 72px; //add margin for header fixed position
+  background-image: url(../../images/home-page/BG\ Image.png);
+  background-color: black;
+  background-size: cover;
+  padding-top: 128px;
+  padding-bottom: 64px;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(column);
+    gap: 48px;
+    h2 {
+      @include my-theme($white, 64px, 700, 120%);
+      width: 670px;
+      @media (max-width: 700px) {
+        font-size: 35px;
+        width: 400px;
+      }
+      @media (max-width: 450px) {
+        font-size: 35px;
+        width: 100%;
+      }
+    }
+    button {
+      @extend %white-button;
+      &:hover {
+        background-color: $green-primary;
+        transition: background-color 2s ease-in-out;
+      }
+    }
+    .text-div {
+      @include my-flex(row, space-between, center);
+      @include my-theme($white, 18px, 500);
+      width: 100%;
+      margin-top: 144px;
+      .line {
+        max-width: 700px;
+        width: 100%;
+        background: #e5e5e5;
+        margin: 0 20px;
+        height: 1px;
+      }
+    }
+  }
+}
+
+#about-us {
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between, center);
+    gap: 96px;
+    .text-box {
+      padding-left: 100px;
+
+      @include my-flex(column, space-between);
+      gap: 32px;
+      h3 {
+        @include my-theme($primary-text, 16px, 700);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        &::before {
+          @extend %pseudo-element-line;
+        }
+      }
+      h2 {
+        @include my-theme($primary-text, 48px, 700);
+        line-height: 120%;
+        @media (max-width: 700px) {
+          font-size: 25px;
+        }
+      }
+      p {
+        @include my-theme($secondary-text, 16px, 400);
+        line-height: 160%;
+      }
+      button {
+        @extend %green_button;
+      }
+    }
+    img {
+      max-width: 480px;
+      width: 100%;
+      @media (max-width: 1200px) {
+        display: none;
+      }
+    }
+  }
+}
+
+#what_we_do {
+  background-color: $green-tertiary;
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between, center);
+    gap: 96px;
+    .text-box {
+      padding-left: 100px;
+      .top-side {
+        h3 {
+          position: relative;
+          margin-bottom: 32px;
+          @include my-theme($primary-text, 16px, 700);
+          text-transform: uppercase;
+          &::before {
+            @extend %pseudo-element-line;
+          }
+        }
+        h2 {
+          @include my-theme($primary-text, 48px, 700, 120%);
+        }
+        p {
+          @include my-theme($secondary-text, 16px, 400, 160%);
+          margin-top: 16px;
+        }
+      }
+      .categories {
+        @include my-flex(column, space-between, flex-start);
+        gap: 24px;
+        width: 436px;
+        margin-top: 32px;
+        @media (max-width: 600px) {
+          width: 100%;
+        }
+        .box {
+          @include my-flex(row);
+          gap: 24px;
+
+          h4 {
+            @include my-theme($primary-text, 24px, 700);
+          }
+          p {
+            @include my-theme($primary-text, 16px, 400, 160%);
+          }
+          div {
+            @include my-flex(column);
+            gap: 8px;
+          }
+        }
+      }
+    }
+    .dog_img {
+      max-width: 480px;
+      width: 100%;
+      @media (max-width: 1200px) {
+        display: none;
+      }
+    }
+  }
+}
+
+#done_projects {
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+    .titles {
+      padding-left: 100px;
+      h3 {
+        position: relative;
+        margin-bottom: 32px;
+        @include my-theme($primary-text, 16px, 700);
+        text-transform: uppercase;
+        &::before {
+          @extend %pseudo-element-line;
+        }
+      }
+      h2 {
+        @include my-theme($primary-text, 48px, 700, 120%);
+        width: 660px;
+        @media (max-width: 900px) {
+          width: 100%;
+        }
+      }
+    }
+    .cards-box {
+      @include my-flex(row, space-between, center);
+      gap: 24px;
+      margin-top: 65px;
+      @media (max-width: 1230px) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .card {
+        width: 411px;
+        padding: 48px;
+        padding-top: 80px;
+        border-radius: 12px;
+        @include my-flex(column);
+        gap: 16px;
+        overflow: hidden;
+
+        h4 {
+          @include my-theme($white, 28px, 700, 150%);
+          position: relative;
+          z-index: 9;
+        }
+        p {
+          @include my-theme($white, 16px, 400, 160%);
+          position: relative;
+          z-index: 9;
+        }
+        button {
+          @extend %white-button;
+          margin-top: 48px;
+        }
+      }
+      .card-1 {
+        position: relative;
+        background: url(../../images/home-page/tree-plantation.svg) no-repeat
+          center center;
+        background-size: cover;
+        &::before {
+          @extend %card-tint;
+        }
+      }
+      .card-2 {
+        position: relative;
+        background: url(../../images/home-page/clean-city.svg) no-repeat center
+          center;
+        background-size: cover;
+        &::before {
+          @extend %card-tint;
+        }
+      }
+      .card-3 {
+        position: relative;
+        background: url(../../images/home-page/wildlife.svg) no-repeat center
+          center;
+        background-size: cover;
+        &::before {
+          @extend %card-tint;
+        }
+        @media (max-width: 1230px) {
+          display: none;
+        }
+        @media (max-width: 900px) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+#pie_chart {
+  background-color: $black-color;
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between, center);
+    gap: 50px;
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
+    .text-box {
+      width: 650px;
+      @media (max-width: 750px) {
+        width: 100%;
+      }
+      .heading {
+        margin-bottom: 32px;
+        @include my-flex(column);
+        gap: 16px;
+        h2 {
+          @include my-theme($white, 48px, 700, 120%);
+        }
+        p {
+          @include my-theme($white, 16px, 400, 160%);
+          opacity: 0.6;
+        }
+      }
+      .details {
+        padding-left: 25px;
+        @include my-flex(row, flex-start);
+        flex-wrap: wrap;
+        row-gap: 16px;
+        column-gap: 48px;
+        span {
+          @include my-theme($white, 16px, 500, 160%);
+        }
+        .green {
+          position: relative;
+          &::before {
+            @include pie-chart($green-secondary);
+          }
+        }
+        .violet {
+          position: relative;
+          &::before {
+            @include pie-chart($violet);
+          }
+        }
+        .yellow {
+          position: relative;
+          &::before {
+            @include pie-chart($yellow);
+          }
+        }
+        .orange {
+          position: relative;
+          &::before {
+            @include pie-chart($orange);
+          }
+        }
+        .pink {
+          position: relative;
+          &::before {
+            @include pie-chart($pink);
+          }
+        }
+      }
+    }
+    .chart-box {
+      position: relative;
+      .logo {
+        @include my-theme($white, 20px, 700);
+        text-align: center;
+        width: 140px;
+        height: 30px;
+        background-color: $black-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+#wind-energy {
+  margin: 96px 0;
+  .container {
+    padding: 93px 0;
+    width: 100%;
+    @extend %responsive-container;
+    @include my-flex(column, center, center);
+    gap: 32px;
+    background-image: url(../../images/home-page/wind-energy.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    &::before {
+      @extend %card-tint;
+    }
+    h2 {
+      @include my-theme($white, 48px, 700, 120%);
+      width: 630px;
+      z-index: 1;
+      text-align: center;
+      @media (max-width: 750px) {
+        width: 90%;
+        font-size: 30px;
+      }
+    }
+    .btn-box {
+      @include my-flex(row);
+      gap: 32px;
+      .join-btn {
+        @extend %green_button;
+        z-index: 1;
+      }
+      .donate {
+        @extend %white-button;
+      }
+    }
+  }
+}
+
+#footer {
+  background-color: $black-color;
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between);
+    flex-wrap: wrap;
+    @media (max-width: 1300px) {
+      @include my-flex(column, space-between, center);
+      row-gap: 50px;
+    }
+    .logo {
+      @include my-theme($white, 24px, 700);
+      margin-right: 100px;
+    }
+    nav {
+      @include my-flex(row);
+      column-gap: 80px;
+      margin-right: 100px;
+      @media (max-width: 1300px) {
+        margin-right: 0;
+      }
+      .link-box {
+        @include my-flex(column);
+        column-gap: 24px;
+        row-gap: 24px;
+        width: 80px;
+
+        h4 {
+          @include my-theme($white, 16px, 700, 160%);
+        }
+        ul {
+          @include my-flex(column);
+          row-gap: 24px;
+          li {
+            a {
+              @include my-theme($white, 14px, 400, 160%);
+              opacity: 0.78;
+            }
+          }
+        }
+      }
+    }
+    form {
+      @include my-flex(column);
+      gap: 32px;
+      width: 480px;
+      h2 {
+        @include my-theme($white, 40px, 700, 140%);
+        @media (max-width: 1300px) {
+          font-size: 24px;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .input-btn {
+        position: relative;
+        height: 64px;
+        input {
+          padding: 22px 0 23px 24px;
+          width: 456px;
+          height: 100%;
+          background-color: transparent;
+          border-radius: 4px;
+          border: 1px solid rgba(235, 240, 249, 0.3);
+          outline: none;
+          @include my-theme($white, 16px, 400);
+        }
+        button {
+          @extend %white-button;
+          position: absolute;
+          right: 0;
+          border: none;
+          top: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+// media page styles
+
+// media header bg style
+.blue-header {
+  background-color: $green-tertiary;
+}
+#top-news {
+  margin-top: 72px;
+  padding: 96px 0;
+  background-color: $green-tertiary;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between, flex-start);
+    @media (max-width: 1300px) {
+      flex-direction: column;
+      gap: 50px;
+    }
+    .left-side {
+      padding-left: 100px;
+      width: 600px;
+      @include my-flex(column, space-between);
+      gap: 32px;
+      @media (max-width: 1300px) {
+        width: 100%;
+      }
+      h3 {
+        @include my-theme($primary-text, 16px, 700);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        &::before {
+          @extend %pseudo-element-line;
+        }
+      }
+      h2 {
+        @include my-theme($primary-text, 56px, 700, 120%);
+      }
+      p {
+        @include my-theme($secondary-text, 16px, 400, 160%);
+      }
+      button {
+        @extend %green_button;
+      }
+    }
+    .right-side {
+      padding: 24px;
+      padding-bottom: 56px;
+      width: 600px;
+      background-color: $white;
+      @include my-flex(column, space-between);
+      gap: 24px;
+      border-radius: 12px;
+      @media (max-width: 1300px) {
+        width: 90%;
+        margin-left: 100px;
+      }
+      article {
+        @include my-flex(row, space-between, center);
+        gap: 24px;
+        .text-box {
+          h4 {
+            @include my-theme($primary-text, 20px, 700, 150%);
+            margin-bottom: 8px;
+          }
+          p {
+            @include my-theme($secondary-text, 16px, 400, 160%);
+          }
+        }
+      }
+    }
+  }
+}
+
+#recent-news {
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+
+    .main-title {
+      @include my-theme($primary-text, 48px, 700, 120%);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .main-p {
+      @include my-theme($primary-text, 16px, 400, 160%);
+      text-align: center;
+      margin-bottom: 88px;
+    }
+    .cards-box {
+      @include my-flex(row, space-between);
+      gap: 20px;
+      flex-wrap: wrap;
+      @media (max-width: 1300px) {
+        justify-content: space-around;
+      }
+      .card {
+        width: 305px;
+        @include my-flex(column);
+        gap: 16px;
+
+        img {
+          max-width: 305px;
+          width: 100%;
+        }
+        h4 {
+          @include my-theme($primary-text, 20px, 500, 150%);
+          width: 100%;
+        }
+        p {
+          @include my-theme($secondary-text, 16px, 400, 160%);
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// contact styles
+//contact header bg color
+.off-white-bg {
+  background-color: $off-white;
+}
+#contact-info {
+  margin-top: 72px;
+  padding: 96px 0;
+  background-color: $off-white;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, flex-start);
+    gap: 120px;
+    @media (max-width: 1100px) {
+      gap: 0;
+      justify-content: space-between;
+    }
+    @media (max-width: 850px) {
+      flex-direction: column;
+      gap: 50px;
+      align-items: center;
+    }
+    .left-side {
+      padding-left: 100px;
+      width: 600px;
+      @media (max-width: 1100px) {
+        width: 400px;
+      }
+      @media (max-width: 850px) {
+        width: 100%;
+      }
+      h3 {
+        @include my-theme($primary-text, 16px, 700);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        margin-bottom: 32px;
+        &::before {
+          @extend %pseudo-element-line;
+        }
+      }
+      h2 {
+        @include my-theme($primary-text, 56px, 700, 120%);
+        margin-bottom: 16px;
+        @media (max-width: 1100px) {
+          font-size: 25px;
+        }
+      }
+      p {
+        @include my-theme($primary-text, 16px, 400, 160%);
+        opacity: 0.7;
+      }
+    }
+    .right-side {
+      @include my-flex(column);
+      gap: 32px;
+      @media (max-width: 850px) {
+        padding-left: 100px;
+        width: 100%;
+      }
+      .tel-email {
+        padding-bottom: 16px;
+        border-bottom: 2px solid #e5e5e5;
+        .info {
+          @include my-flex(row);
+          gap: 32px;
+        }
+        h4 {
+          @include my-theme($primary-text, 24px, 700, 160%);
+          margin-bottom: 10px;
+        }
+        a {
+          @include my-theme($primary-text, 16px, 400, 28px);
+        }
+      }
+      .headoffice,
+      .branch-office {
+        h4 {
+          @include my-theme($primary-text, 20px, 700, 160%);
+          margin-bottom: 8px;
+        }
+        p {
+          @include my-theme($primary-text, 16px, 400, 160%);
+        }
+      }
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
+
+#contact-form {
+  padding: 96px 0;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, center, center);
+    .my-form {
+      width: 768px;
+      @media (max-width: 880px) {
+        width: 400px;
+      }
+      .input-box {
+        @include my-flex(row, space-between);
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+      .label-input {
+        @include my-flex(column);
+        gap: 8px;
+        margin-bottom: 32px;
+        label {
+          @include my-theme($primary-text, 12px, 700, 160%);
+          opacity: 0.6;
+        }
+        input {
+          width: 368px;
+          border: none;
+          border-bottom: 1px solid #e5e5e5;
+          padding-bottom: 5px;
+          outline: none;
+        }
+      }
+      .message {
+        width: 100%;
+        height: 150px;
+        padding: 20px;
+        border-radius: 4px;
+        border: 2px solid #e5e5e5;
+        resize: none;
+        outline: none;
+      }
+      button {
+        @extend %green_button;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+#map {
+  width: 100%;
+  iframe {
+    width: 100%;
+    height: 440px;
+  }
+}
+
+// donations page style
+#donate {
+  margin-top: 72px;
+  padding: 96px 0;
+  background-color: $off-white;
+  .container {
+    @extend %responsive-container;
+    @include my-flex(row, space-between);
+    gap: 50px;
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+    }
+    .text-side {
+      padding-left: 100px;
+      width: 600px;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
+      h3 {
+        @include my-theme($primary-text, 16px, 700);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        margin-bottom: 32px;
+        &::before {
+          @extend %pseudo-element-line;
+        }
+      }
+      h2 {
+        @include my-theme($primary-text, 56px, 700, 120%);
+        margin-bottom: 14px;
+        @media (max-width: 1100px) {
+          font-size: 25px;
+        }
+      }
+      p {
+        @include my-theme($primary-text, 16px, 400, 160%);
+        opacity: 0.7;
+      }
+      button {
+        margin-top: 32px;
+        @extend %green_button;
+      }
+    }
+  }
+}
